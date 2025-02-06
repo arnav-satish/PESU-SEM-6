@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<robot name="my_car">
+
+  <!-- Base of the car -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="1.5 0.8 0.4"/> <!-- Car body size -->
+      </geometry>
+      <material name="blue">
+        <color rgba="0.0 0.0 1.0 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Front Left Wheel -->
+  <link name="front_left_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.15" length="0.05"/> 
+      </geometry>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Front Right Wheel -->
+  <link name="front_right_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.15" length="0.05"/> 
+      </geometry>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Rear Left Wheel -->
+  <link name="rear_left_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.15" length="0.05"/> 
+      </geometry>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Rear Right Wheel -->
+  <link name="rear_right_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.15" length="0.05"/> 
+      </geometry>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Camera Module (Face) -->
+  <link name="camera_module">
+    <visual>
+      <geometry>
+        <box size="0.5 0.3 0.3"/> <!-- Face-like box -->
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Camera Lens -->
+  <link name="camera_lens">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.2"/> <!-- Lens size -->
+      </geometry>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Joints -->
+  <joint name="front_left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_left_wheel"/>
+    <origin xyz="-0.6 0.4 -0.2"/>
+    <axis xyz="1 0 0"/> <!-- Make wheel stand vertically -->
+  </joint>
+
+  <joint name="front_right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_right_wheel"/>
+    <origin xyz="-0.6 -0.4 -0.2"/>
+    <axis xyz="1 0 0"/> <!-- Make wheel stand vertically -->
+  </joint>
+
+  <joint name="rear_left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="rear_left_wheel"/>
+    <origin xyz="0.6 0.4 -0.2"/>
+    <axis xyz="1 0 0"/> <!-- Make wheel stand vertically -->
+  </joint>
+
+  <joint name="rear_right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="rear_right_wheel"/>
+    <origin xyz="0.6 -0.4 -0.2"/>
+    <axis xyz="1 0 0"/> <!-- Make wheel stand vertically -->
+  </joint>
+
+  <!-- Joint for Camera Module -->
+  <joint name="camera_module_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_module"/>
+    <origin xyz="0.75 0 0.5" rpy="0 0 0"/> <!-- Mounted on top -->
+  </joint>
+
+  <!-- Joint for Camera Lens -->
+  <joint name="camera_lens_joint" type="fixed">
+    <parent link="camera_module"/>
+    <child link="camera_lens"/>
+    <origin xyz="0 0 0.15" rpy="0 0 0"/> <!-- Lens centered in the module -->
+  </joint>
+
+</robot>
+
