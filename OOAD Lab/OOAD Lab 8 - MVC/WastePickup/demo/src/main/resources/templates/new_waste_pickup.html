@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Waste Pickup Request</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+    <h1>Create New Waste Pickup Request</h1>
+    <form th:action="@{/wastepickups/save}" th:object="${wastePickup}" method="post">
+        <div>
+            <label for="wasteType">Waste Type:</label>
+            <input type="text" id="wasteType" th:field="*{wasteType}" required>
+        </div>
+        <div>
+            <label for="pickupLocation">Pickup Location:</label>
+            <input type="text" id="pickupLocation" th:field="*{pickupLocation}" required>
+        </div>
+        <div>
+            <label for="pickupDateTime">Pickup Date & Time:</label>
+            <input type="datetime-local" id="pickupDateTime" th:field="*{pickupDateTime}" required>
+        </div>
+        <div>
+            <label for="userName">User Name:</label>
+            <input type="text" id="userName" th:field="*{userName}" required>
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <a th:href="@{/wastepickups}">Back to List</a>
+</body>
+</html>

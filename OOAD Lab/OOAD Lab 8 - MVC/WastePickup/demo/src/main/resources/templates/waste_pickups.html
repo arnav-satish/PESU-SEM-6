@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Waste Pickups</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Waste Pickup Requests</h1>
+        <a th:href="@{/wastepickups/new}" class="button">Create New Request</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Waste Type</th>
+                    <th>Pickup Location</th>
+                    <th>Pickup Date & Time</th>
+                    <th>Status</th>
+                    <th>User</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="wastePickup : ${wastePickups}">
+                    <td th:text="${wastePickup.id}"></td>
+                    <td th:text="${wastePickup.wasteType}"></td>
+                    <td th:text="${wastePickup.pickupLocation}"></td>
+                    <td th:text="${wastePickup.pickupDateTime}"></td>
+                    <td th:text="${wastePickup.status}"></td>
+                    <td th:text="${wastePickup.userName}"></td>
+                    <td>
+                        <a th:href="@{/wastepickups/view/{id}(id=${wastePickup.id})}" class="button view">View</a>
+                        <a th:href="@{/wastepickups/edit/{id}(id=${wastePickup.id})}" class="button edit">Edit</a>
+                        <a th:href="@{/wastepickups/delete/{id}(id=${wastePickup.id})}" class="button delete">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

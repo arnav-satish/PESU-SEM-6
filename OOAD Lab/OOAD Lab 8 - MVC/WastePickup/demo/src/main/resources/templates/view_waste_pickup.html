@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Waste Pickup</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+    <h1>Waste Pickup Details</h1>
+    <div>
+        <p><strong>ID:</strong> <span th:text="${wastePickup.id}"></span></p>
+        <p><strong>Waste Type:</strong> <span th:text="${wastePickup.wasteType}"></span></p>
+        <p><strong>Pickup Location:</strong> <span th:text="${wastePickup.pickupLocation}"></span></p>
+        <p><strong>Pickup Date & Time:</strong> <span th:text="${wastePickup.pickupDateTime}"></span></p>
+        <p><strong>Status:</strong> <span th:text="${wastePickup.status}"></span></p>
+        <p><strong>User:</strong> <span th:text="${wastePickup.userName}"></span></p>
+    </div>
+    <a th:href="@{/wastepickups}">Back to List</a>
+</body>
+</html>
